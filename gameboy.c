@@ -6,11 +6,18 @@
 #include "util.h"
 
 typedef struct registers_s{
-	unsigned char a;
-	unsigned char b;
-	unsigned char c;
+	uint8_t a;
+	uint8_t b;
+	uint8_t c;
+	uint8_t d;
+	uint8_t e;
+	uint8_t f;
+	uint8_t h;
+	uint8_t l;
+	uint16_t sp;
+	uint16_t pc;
 
-}
+}Registers;
 
 int main(){
 	//Attempt to allocate buffers for memory
@@ -21,7 +28,7 @@ int main(){
 	}
 	cartData* cart = 0x0;
 	FILE* rawCart = 0x0;
-	if((argc==1) && ((rawCart = fopen(argv[1], "rb") || (rawCart!=0x0)){
+	if((argc==1) && ((rawCart = fopen(argv[1], "rb"))) || (rawCart!=0x0)){
 		int cartSize = getFileSize(rawCart);
 		unsigned char* tempBuffer = malloc(cartSize);
 		fread(tempBuffer, 1, cartSize, rawCart);
@@ -35,6 +42,10 @@ int main(){
 	}
 
 	//Create registers
+	Registers* regs = malloc(sizeof(Registers));
+	
+	
+	
 
 
 
